@@ -1,0 +1,35 @@
+var express = require('express'),
+    app = express(),
+    MongoClient = require('mongodb').MongoClient,
+    Server = require('mongodb').Server;
+
+var db;
+
+app.get('/', function (req, res) {
+/*
+    db.collection('users').insert({user:'Harry Potter'},{w:1,j:1},function(err,res){
+        if (err) throw err;
+    });
+    */
+    db.collection('users').find({},{readPreference:'nearest'}).toArray(function(err, docs) {
+        if (err) throw err;
+
+        var users = "<p>Magos célebres:</p><ul>"
+        docs.forEach(function(doc){
+            users += "<li>" + doc.user + "</li>";
+        });
+        users += "</ul>"
+        res.send(users);
+    });
+
+});
+
+// Connect to the db and start server
+MongoClient.connect("mongodb://comun02:31000,comun02:31001,comun02:31002/test?w=0&readPreference=secondary", function(err, database) {
+    if (err) throw err;
+    db=database;
+    app.listen(8080,function(){
+        console.log('Express server running on port 8080..');
+    });
+});
+
