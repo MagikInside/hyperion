@@ -8,7 +8,7 @@ var express = require('express'),
     ObjectID = require('mongodb').ObjectID;
 
 var url_local = "mongodb://127.0.0.1/test";
-var url_cloud = "mongodb://root:S71AEkqlorN8@127.0.0.1/test";
+var url_cloud = "mongodb://client:mongo1184@127.0.0.1/test";
 
 //The database
 var db;
