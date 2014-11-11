@@ -31,6 +31,9 @@
         <h1>Trabajo en España</h1>
         <p>A continuación se muestra información acerca del trabajo en españa, recabada a partir de ofertas de trabajo publicadas en el portal más importante del país, incorporando la información de más de veinte mil entradas.</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Más información &raquo;</a></p>
+        <ul class="checkbox" ng-repeat="city in cities">
+            <li><b>{{city._id | uppercase}}</b>: {{city.num}} ofertas</li>
+        </ul>
     </div>
 </div>
 
