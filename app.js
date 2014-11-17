@@ -32,16 +32,32 @@ app.use(morgan('dev')); 					// log every request to the console
 
 //Routes
 //GET -
+//Cities
 app.get('/api/cities', function(req, res) {
     db.collection('jobs').aggregate([
         { $group:{ _id:"$city",num:{$sum:1}}},
         {$sort:{num:-1}},
-        {$limit:10}
+        {$limit:19}
     ], function(err, cities) {
         if(err) throw err;
         res.json(cities);
     });
 });
+//Terms
+app.get('/api/terms', function(req, res) {
+    var word_count = db.collection('word_count');
+
+    var cursor = word_count.find({});
+    cursor.limit(10);
+    cursor.sort('value', -1);
+    cursor.toArray(function(err, words) {
+        if(err) throw err;
+        res.json(words);
+    });
+
+});
+
+
 // Route to the page
 app.get('*', function(req, res) {
     // res.sendFile('/home/luisma/workspace/pruebaMEAN/public/index.html');

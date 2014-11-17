@@ -22,23 +22,47 @@
             </button>
             <a class="navbar-brand" href="#">Hyperion</a>
         </div>
-     </div>
+    </div>
 </nav>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
         <h1>Trabajo en España</h1>
-        <p>A continuación se muestra información acerca del trabajo en españa, recabada a partir de ofertas de trabajo publicadas en el portal más importante del país, incorporando la información de más de veinte mil entradas.</p>
+        <p>A continuación se muestra información acerca de la demanda de trabajo en España, recabada a partir de ofertas laborales publicadas en el portal web más importante de empleo del país, incorporando la información de más de cerca de treinta mil entradas:</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Más información &raquo;</a></p>
-        <ul class="checkbox" ng-repeat="city in cities">
-            <li><b>{{city._id | uppercase}}</b>: {{city.num}} ofertas</li>
-        </ul>
     </div>
 </div>
 
 <div class="container">
+    <div id="cities">
+        <p>En esta primera gráfica podemos ver la distribución de ofertas laborales por ciudades, mostrando las diez ciudades con mayor cantidad de ellas.</p>
+        <div ac-chart="'pie'" ac-data="data" ac-config="config" id='chart' class='chart'></div>
+
+
+        <div class="list-group">
+            <a ng-repeat="city in cities" href="#" class="list-group-item list-group-item-info"><b>{{city._id | uppercase}}</b>: {{city.num}} ofertas</a>
+        </div>
+
+        <div class="cf"/>
+    </div>
+    <br/><br/><br/><br/>
+    <div id="terms">
+        <p>En esta segunda gŕafica se mostrarán los términos más utilizados en las distintas ofertas, ignorando preposiciones y otros caracteres no relevantes en este contexto:</p>
+        <div ac-chart="'bar'" ac-data="data2" ac-config="config2" class='chart'></div>
+
+
+        <div class="list-group">
+            <a ng-repeat="term in terms" href="#" class="list-group-item list-group-item-info"><b>{{term._id}}</b>: {{term.value}} ofertas</a>
+        </div>
+
+        <div class="cf"/>
+    </div>
+
+    <br/><br/><br/>
+
     <!-- Example row of columns -->
+    <!--
     <div class="row">
         <div class="col-md-4">
             <h2>Heading</h2>
@@ -56,7 +80,7 @@
             <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
     </div>
-
+-->
     <hr>
 
     <footer>
@@ -70,8 +94,12 @@
 
 
 
-
+<!--Angularjs-->
 <script src="js/angular.min.js"></script>
+<!--Charts-->
+<script src="js/d3.min.js" charset="utf-8"></script>
+<script src="js/angular-charts.min.js" type='text/javascript'></script>
+<!--Controles-->
 <script src="js/controllers.js"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
