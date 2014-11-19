@@ -72,19 +72,20 @@ hyperion.controller('MainCtrl', function ($scope,  $http) {
 
 
    function insertDataCities() {
-       $scope.cities.push({_id:"resto de ciudades",num:14045});
-       for (var i = 0; i < $scope.cities.length ;i++ ) {
+var ofertas = 0;
+       for (var i = 0; i < 19 ;i++ ) {
            var city = {};
            city.x = $scope.cities[i]._id.toUpperCase();
            city.y = [$scope.cities[i].num];
            city.tooltip = $scope.cities[i]._id.toUpperCase() + ' - ' + $scope.cities[i].num;
            $scope.data.data.push(city);
+           ofertas += $scope.cities[i].num;
        }
-
+       $scope.data.data.push({x:"RESTO DE CIUDADES", y:[30359 - ofertas], tooltip: "RESTO DE CIUDADES - " + (30359 - ofertas)});
    }
     function insertDataTerms() {
 
-        for (var i = 0; i < $scope.terms.length ;i++ ) {
+        for (var i = 0; i < 10 ;i++ ) {
             var term = {};
             term.x = $scope.terms[i]._id;
             term.y = [$scope.terms[i].value];

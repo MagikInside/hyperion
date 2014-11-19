@@ -29,19 +29,19 @@
 <div class="jumbotron">
     <div class="container">
         <h1>Trabajo en España</h1>
-        <p>A continuación se muestra información acerca de la demanda de trabajo en España, recabada a partir de ofertas laborales publicadas en el portal web más importante de empleo del país, incorporando la información de más de cerca de treinta mil entradas:</p>
+        <p>A continuación se muestra información acerca de la demanda de trabajo en España, recabada a partir de ofertas laborales publicadas en el portal web más importante de empleo del país, incorporando la información de más de treinta mil entradas.</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Más información &raquo;</a></p>
     </div>
 </div>
 
 <div class="container">
     <div id="cities">
-        <p>En esta primera gráfica podemos ver la distribución de ofertas laborales por ciudades, mostrando las diez ciudades con mayor cantidad de ellas.</p>
+        <p>En esta primera gráfica podemos ver la distribución de ofertas laborales por ciudades, mostrando las ciudades con mayor cantidad de ellas:</p>
         <div ac-chart="'pie'" ac-data="data" ac-config="config" id='chart' class='chart'></div>
 
-
+       <div class="search"> Buscar: <input ng-model="query"></div><br/><br/>
         <div class="list-group">
-            <a ng-repeat="city in cities" href="#" class="list-group-item list-group-item-info"><b>{{city._id | uppercase}}</b>: {{city.num}} ofertas</a>
+            <a ng-repeat="city in cities | filter:query | limitTo: 20" href="#" class="list-group-item list-group-item-info"><b>{{city._id | uppercase}}</b>: {{city.num}} ofertas</a>
         </div>
 
         <div class="cf"/>
@@ -51,9 +51,9 @@
         <p>En esta segunda gŕafica se mostrarán los términos más utilizados en las distintas ofertas, ignorando preposiciones y otros caracteres no relevantes en este contexto:</p>
         <div ac-chart="'bar'" ac-data="data2" ac-config="config2" class='chart'></div>
 
-
+        <div class="search"> Buscar: <input ng-model="query2"></div><br/><br/>
         <div class="list-group">
-            <a ng-repeat="term in terms" href="#" class="list-group-item list-group-item-info"><b>{{term._id}}</b>: {{term.value}} ofertas</a>
+            <a ng-repeat="term in terms | filter:query2 | limitTo: 20" href="#" class="list-group-item list-group-item-info"><b>{{term._id}}</b>: {{term.value}} ofertas</a>
         </div>
 
         <div class="cf"/>

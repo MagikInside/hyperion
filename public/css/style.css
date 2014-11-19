@@ -19,6 +19,9 @@
   margin-top: 30px;
   margin-bottom: 80px; }
 
+.search {
+  text-align: center; }
+
 /*Clear Fix */
 .cf:before,
 .cf:after {
