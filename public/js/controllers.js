@@ -7,7 +7,7 @@ hyperion.controller('MainCtrl', function ($scope,  $http) {
     $scope.name = 'MaGiK';
 
     // When the page loads, ask for the data
-    //ciudades
+    //Cities
     $http.get('/api/cities')
         .success(function(data) {
             $scope.cities = data;
@@ -16,7 +16,7 @@ hyperion.controller('MainCtrl', function ($scope,  $http) {
         .error(function(data) {
             console.log('Error: ' + data);
         });
-    //términos
+    //Trems
     $http.get('/api/terms')
         .success(function(data) {
             $scope.terms = data;
@@ -70,7 +70,7 @@ hyperion.controller('MainCtrl', function ($scope,  $http) {
     };
 
 
-
+//Populate config for cities
    function insertDataCities() {
 var ofertas = 0;
        for (var i = 0; i < 19 ;i++ ) {
@@ -83,6 +83,7 @@ var ofertas = 0;
        }
        $scope.data.data.push({x:"RESTO DE CIUDADES", y:[30359 - ofertas], tooltip: "RESTO DE CIUDADES - " + (30359 - ofertas)});
    }
+    //Populate config for terms
     function insertDataTerms() {
 
         for (var i = 0; i < 10 ;i++ ) {
