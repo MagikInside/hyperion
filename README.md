@@ -15,26 +15,29 @@ For this project I used:
 
 ## How to use
 
-1. Clone the project:
+> You will need MongoDB installed and running
 
+1. Clone the project:<br><br>
 ```
      $git clone https://github.com/MagikInside/hyperion.git
 ```
 
-2. Install dependencies:
-
+2. Install dependencies:<br><br>
 ```
      $cd hyperion
-```
-
+```<br>
 ```
      $npm install
 ```
 
-3. Start:
+3. Import the database:<br><br>
+```
+     $mongorestore -db infojobs db/dump/infojobs/
+```
 
+4. Start:<br><br>
 ```
      $ node app.js
 ```
 
-> The program will process 1520 pages, so it will be running for a while before ending. Be patient. Then it will create a file "output.json" with the result.
+Now you can see the page in [http://localhost:3000](http://localhost:3000)
